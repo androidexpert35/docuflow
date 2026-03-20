@@ -102,11 +102,16 @@
         padding: 14px;
         flex: 1;
         align-items: stretch;
+        justify-content: flex-start;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     #doc-render {
         width: 100%;
-        min-height: auto;
+        min-height: 0;
+        flex: 1 0 auto;
         padding: 16px;
         border-radius: 10px;
     }

@@ -1,32 +1,102 @@
 // --- Markdown Renderer ---
 // Handles parsing, Prism syntax highlighting, and page title sync.
 
-const defaultText = `# Compact Code PDF
+const defaultText = `# Welcome to DocuFlow ✨
 
-## Preview vs Print
-1. **Preview (Screen):** Large font, horizontal slider.
-2. **Print (PDF):** Small font, text wrap, **backgrounds enabled**.
+> A sleek, client-side Markdown editor with **live preview**, **real-time syntax highlighting**, and **one-click PDF export** — no server, no sign-up, no data leaves your browser.
 
-This is \`inline code\` and it should have a grey background in the PDF.
+---
+
+## 🎨 Rich Text Formatting
+
+You can write in **bold**, *italic*, or go all-in with ***bold italic***. Need to reference code? Use \`inline code\` right inside a sentence.
+
+Here's a [link to the repo](https://github.com/androidexpert35/docuflow) and an image example:
+
+![DocuFlow](https://img.shields.io/badge/DocuFlow-Markdown_to_PDF-3b82f6?style=for-the-badge)
+
+---
+
+## 📋 Lists & Checklists
+
+### What DocuFlow can do:
+- ✅ Real-time Markdown rendering
+- ✅ Editor syntax highlighting as you type
+- ✅ Export pixel-perfect A4 PDFs
+- ✅ Clickable Table of Contents in PDFs
+- ✅ 300+ language syntax highlighting via Prism.js
+
+### Getting started:
+1. Write your Markdown on the left
+2. Watch the preview update instantly on the right
+3. Click **Save PDF** when you're ready — done!
+
+---
+
+## 💻 Code Blocks
+
+DocuFlow highlights 300+ languages automatically.
 
 \`\`\`kotlin
-package com.wrap.test
-
-class PdfGenerator {
-    // This very long line will wrap nicely in the PDF and print perfectly.
-    fun generateSecureToken(userId: String, timestamp: Long): String {
-        val veryLongToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c_CODE_END_PART"
-        
-        return veryLongToken
+class DocuFlow {
+    // One-click PDF generation
+    fun exportPdf(markdown: String): ByteArray {
+        val html = MarkdownParser.render(markdown)
+        return PdfEngine.generate(html, pageSize = A4)
     }
 }
 \`\`\`
 
-## Data Table
-| ID | User   | Token (Truncated) | Status |
-|----|--------|-------------------|--------|
-| 01 | Admin  | eyJhbGciOiJIUz..  | OK     |
-| 02 | Guest  | SflKxwRJSMeK..    | ERR    |
+\`\`\`javascript
+// Real-time preview rendering
+function render() {
+    const html = marked.parse(editor.value);
+    preview.innerHTML = html;
+    Prism.highlightAllUnder(preview);
+}
+\`\`\`
+
+\`\`\`python
+# Even Python looks great!
+def fibonacci(n: int) -> list[int]:
+    a, b = 0, 1
+    return [(a, b := (b, a + b))[0] for _ in range(n)]
+\`\`\`
+
+---
+
+## 📊 Tables
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Live Preview | ✅ Ready | Side-by-side split view |
+| Syntax Highlighting | ✅ Ready | Editor + Preview |
+| PDF Export | ✅ Ready | A4, clickable TOC |
+| Smart Page Breaks | ✅ Ready | No orphaned headings |
+| Responsive | ✅ Ready | Mobile-friendly |
+
+---
+
+## 💡 Blockquotes
+
+> *"The best tool is the one that gets out of your way."*
+>
+> DocuFlow is pure HTML, CSS & JavaScript — open it in any browser, start writing, export. That's it.
+
+---
+
+## 🔗 Heading Anchors & TOC
+
+Every heading becomes a clickable anchor in the exported PDF. This means you can build a **Table of Contents** that actually works:
+
+- [Welcome](#welcome-to-docuflow-)
+- [Rich Text](#-rich-text-formatting)
+- [Code Blocks](#-code-blocks)
+- [Tables](#-tables)
+
+---
+
+### Try it now — edit this text and watch the magic happen! 🚀
 `;
 
 const input = document.getElementById('md-input');
