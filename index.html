@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="src/css/pdf-mode.css">
     <link rel="stylesheet" href="src/css/pdf-overlay.css">
     <link rel="stylesheet" href="src/css/print.css">
+    <link rel="stylesheet" href="src/css/editor-highlight.css">
     <link rel="stylesheet" href="src/css/responsive.css">
 </head>
 <body>
@@ -44,7 +45,10 @@
                 <span class="material-symbols-rounded" style="font-size: 16px;">edit_note</span>
                 Markdown Editor
             </div>
-            <textarea id="md-input" spellcheck="false" placeholder="Start writing your document here..."></textarea>
+            <div class="editor-container">
+                <pre class="editor-backdrop" id="editor-backdrop" aria-hidden="true"><code id="editor-highlight"></code></pre>
+                <textarea id="md-input" spellcheck="false" placeholder="Start writing your document here..."></textarea>
+            </div>
         </div>
 
         <div class="split-resizer" id="split-resizer" role="separator" aria-orientation="vertical" aria-label="Resize editor and preview" tabindex="0"></div>
@@ -61,6 +65,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <!-- App JS -->
+    <script src="src/js/editor-highlight.js"></script>
     <script src="src/js/renderer.js"></script>
     <script src="src/js/pdf-generator.js"></script>
     <script src="src/js/split-resizer.js"></script>

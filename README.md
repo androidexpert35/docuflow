@@ -21,8 +21,9 @@
 | Feature | Description |
 |---------|-------------|
 | **Live Preview** | Side-by-side editor with real-time Markdown rendering |
+| **Editor Syntax Highlighting** | Real-time colorized Markdown in the editor — headings, bold, italic, code, links, lists, tables, and more are visually distinguished as you type |
 | **PDF Export** | One-click, high-quality A4 PDF generation — entirely client-side |
-| **Syntax Highlighting** | 300+ languages via Prism.js with a custom neon dark theme |
+| **Code Syntax Highlighting** | 300+ languages via Prism.js with a custom neon dark theme in the preview & PDF |
 | **Clickable TOC** | Internal anchor links that work inside the generated PDF |
 | **Smart Page Breaks** | Headings stay grouped with their content — no orphaned titles |
 | **Resizable Panels** | Drag the split bar to resize editor & preview (keyboard-accessible) |
@@ -44,19 +45,21 @@ docuflow/
 ├── index.html              # Entry point
 └── src/
     ├── css/
-    │   ├── variables.css   # Design tokens & custom properties
-    │   ├── layout.css      # Workspace, editor, preview, scrollbar
-    │   ├── header.css      # Top bar, branding, Save PDF button
+    │   ├── variables.css       # Design tokens & custom properties
+    │   ├── layout.css          # Workspace, editor, preview, scrollbar
+    │   ├── header.css          # Top bar, branding, Save PDF button
     │   ├── split-resizer.css
-    │   ├── document.css    # Rendered Markdown typography & code theme
-    │   ├── pdf-mode.css    # PDF capture overrides & page-break rules
-    │   ├── pdf-overlay.css # Loading spinner overlay
-    │   ├── print.css       # @media print fallback
-    │   └── responsive.css  # Breakpoints (992 / 768 / 420 px)
+    │   ├── document.css        # Rendered Markdown typography & code theme
+    │   ├── editor-highlight.css# Editor syntax-highlight token colors
+    │   ├── pdf-mode.css        # PDF capture overrides & page-break rules
+    │   ├── pdf-overlay.css     # Loading spinner overlay
+    │   ├── print.css           # @media print fallback
+    │   └── responsive.css      # Breakpoints (992 / 768 / 420 px)
     └── js/
-        ├── renderer.js     # Markdown parsing, Prism, title sync
-        ├── pdf-generator.js# html2pdf.js pipeline & link injection
-        └── split-resizer.js# Drag-to-resize split view
+        ├── editor-highlight.js # Real-time Markdown syntax highlighter
+        ├── renderer.js         # Markdown parsing, Prism, title sync
+        ├── pdf-generator.js    # html2pdf.js pipeline & link injection
+        └── split-resizer.js    # Drag-to-resize split view
 ```
 
 <br/>
@@ -97,7 +100,7 @@ cd md-to-pdf-converter
 
 ## 📖 Usage
 
-1. **Write** your Markdown in the left editor panel.
+1. **Write** your Markdown in the left editor panel — syntax is colorized in real time (headings, bold, italic, code blocks, links, lists, tables, etc.).
 2. **Preview** the rendered document in real time on the right.
 3. Click **Save PDF** — a polished A4 PDF is generated and downloaded instantly.
 

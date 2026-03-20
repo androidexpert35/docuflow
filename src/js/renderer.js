@@ -59,4 +59,4 @@ if (window.Prism) {
 
 input.addEventListener('input', render);
 input.value = defaultText;
-render();
+input.dispatchEvent(new Event('input'));

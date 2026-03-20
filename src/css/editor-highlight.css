@@ -1,0 +1,186 @@
+/* --- Editor Syntax Highlighting (Overlay Technique) --- */
+
+.editor-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Highlighted backdrop behind the textarea */
+.editor-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e2e8f0;
+    background: transparent;
+    border: none;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    pointer-events: none;
+    box-sizing: border-box;
+    tab-size: 4;
+}
+
+.editor-backdrop code {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    background: transparent;
+    padding: 0;
+    display: block;
+}
+
+/* Transparent text textarea — caret stays visible */
+textarea#md-input {
+    position: relative;
+    z-index: 1;
+    color: transparent;
+    caret-color: #93c5fd;
+    background: transparent;
+}
+
+/* Hide the backdrop's scrollbar (synced via JS) */
+.editor-backdrop::-webkit-scrollbar {
+    display: none;
+}
+.editor-backdrop {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* --- Markdown Syntax Token Colors --- */
+
+.md-heading {
+    color: #93c5fd;
+    font-weight: 700;
+}
+
+.md-heading-marker {
+    color: #60a5fa;
+    font-weight: 700;
+}
+
+.md-bold {
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+.md-bold-marker {
+    color: #92702a;
+}
+
+.md-italic {
+    color: #a78bfa;
+    font-style: italic;
+}
+
+.md-italic-marker {
+    color: #6b5fa0;
+}
+
+.md-bold-italic {
+    color: #f472b6;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.md-bold-italic-marker {
+    color: #994070;
+}
+
+.md-code-inline {
+    color: #34d399;
+    background-color: rgba(52, 211, 153, 0.08);
+    border-radius: 3px;
+}
+
+.md-code-marker {
+    color: #2a7a5a;
+}
+
+.md-code-block-marker {
+    color: #3b7a5a;
+    font-weight: 600;
+}
+
+.md-code-block-lang {
+    color: #34d399;
+    font-weight: 600;
+}
+
+.md-code-block-content {
+    color: #94a3b8;
+}
+
+.md-link-text {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+.md-link-url {
+    color: #475569;
+}
+
+.md-link-bracket {
+    color: #6b7280;
+}
+
+.md-image-marker {
+    color: #f472b6;
+}
+
+.md-blockquote-marker {
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+.md-blockquote-text {
+    color: #cbd5e1;
+    font-style: italic;
+}
+
+.md-list-marker {
+    color: #fb923c;
+    font-weight: 700;
+}
+
+.md-hr {
+    color: #64748b;
+    font-weight: 700;
+}
+
+.md-table-pipe {
+    color: #6366f1;
+    font-weight: 700;
+}
+
+.md-table-separator {
+    color: #4f46e5;
+}
+
+.md-html-tag {
+    color: #f87171;
+}
+
+/* Placeholder override for transparent textarea */
+textarea#md-input::placeholder {
+    color: #475569;
+}
+
+/* --- Responsive override for editor container --- */
+@media (max-width: 768px) {
+    .editor-backdrop {
+        padding: 14px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+}

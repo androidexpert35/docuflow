@@ -87,6 +87,12 @@
         line-height: 1.5;
     }
 
+    .editor-backdrop {
+        padding: 14px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
     .pane-label {
         padding: 10px 14px;
     }
