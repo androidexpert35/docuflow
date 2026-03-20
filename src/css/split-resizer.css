@@ -1,0 +1,81 @@
+/* --- Split View Resizer --- */
+
+.split-resizer {
+    flex: 0 0 14px;
+    cursor: col-resize;
+    position: relative;
+    touch-action: none;
+    user-select: none;
+    background: transparent;
+    z-index: 2;
+}
+
+/* Thin track line */
+.split-resizer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        rgba(148, 163, 184, 0) 0%,
+        rgba(148, 163, 184, 0.25) 18%,
+        rgba(148, 163, 184, 0.45) 50%,
+        rgba(148, 163, 184, 0.25) 82%,
+        rgba(148, 163, 184, 0) 100%
+    );
+    opacity: 0.9;
+}
+
+/* Draggable pill with grip dots */
+.split-resizer::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 52px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle, rgba(226,232,240,0.85) 1.1px, transparent 1.2px) 50% 35% / 6px 10px,
+        radial-gradient(circle, rgba(226,232,240,0.85) 1.1px, transparent 1.2px) 50% 65% / 6px 10px,
+        linear-gradient(180deg, rgba(30,41,59,0.85), rgba(30,41,59,0.55));
+    box-shadow:
+        0 8px 18px rgba(0,0,0,0.25),
+        0 0 0 1px rgba(148, 163, 184, 0.28),
+        0 0 0 6px rgba(59, 130, 246, 0);
+    transition:
+        box-shadow 180ms ease,
+        transform 180ms ease,
+        filter 180ms ease;
+    filter: saturate(1.05);
+}
+
+.split-resizer:hover::after,
+.split-resizer:focus-visible::after {
+    box-shadow:
+        0 10px 22px rgba(0,0,0,0.30),
+        0 0 0 1px rgba(226, 232, 240, 0.25),
+        0 0 0 6px rgba(59, 130, 246, 0.12);
+    transform: translate(-50%, -50%) scale(1.03);
+}
+
+.workspace.is-resizing {
+    cursor: col-resize;
+}
+
+.workspace.is-resizing .split-resizer::after {
+    box-shadow:
+        0 12px 26px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(226, 232, 240, 0.28),
+        0 0 0 8px rgba(59, 130, 246, 0.18);
+    transform: translate(-50%, -50%) scale(1.04);
+}
+
+.workspace.is-resizing * {
+    user-select: none !important;
+}

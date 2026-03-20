@@ -1,0 +1,24 @@
+/* --- Design Tokens --- */
+:root {
+    --header-height: 70px;
+    --a4-width: 210mm;
+
+    /* Modern Palette */
+    --bg-dark: #0f172a;
+    --bg-editor: #1e293b;
+    --bg-preview: #f1f5f9;
+    --accent-primary: #3b82f6;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+
+    /* Neon Palette (For code) */
+    --code-bg: #1e1e2e;
+    --code-fg: #dcdfe4;
+    --token-keyword: #ff79c6;
+    --token-class: #8be9fd;
+    --token-function: #bd93f9;
+    --token-string: #f1fa8c;
+    --token-comment: #6272a4;
+    --token-number: #ffb86c;
+    --token-operator: #ff5555;
+}

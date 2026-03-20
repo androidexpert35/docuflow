@@ -1,0 +1,74 @@
+/* --- PDF Capture Mode (applied by html2pdf.js before rendering) --- */
+
+#doc-render.pdf-mode {
+    padding: 0 !important;
+    width: 170mm !important;
+    min-height: auto !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+}
+
+/* --- Heading sizes & spacing --- */
+
+#doc-render.pdf-mode h1 { font-size: 1.7em !important;  margin-top: 1.6em !important; margin-bottom: 0.6em !important; }
+#doc-render.pdf-mode h2 { font-size: 1.35em !important; margin-top: 1.5em !important; margin-bottom: 0.5em !important; }
+#doc-render.pdf-mode h3 { font-size: 1.15em !important; margin-top: 1.3em !important; margin-bottom: 0.4em !important; }
+#doc-render.pdf-mode h4,
+#doc-render.pdf-mode h5,
+#doc-render.pdf-mode h6 { font-size: 1em !important; margin-top: 1.2em !important; margin-bottom: 0.4em !important; }
+
+/* --- Element spacing --- */
+
+#doc-render.pdf-mode p          { margin-bottom: 1em !important; }
+#doc-render.pdf-mode ul,
+#doc-render.pdf-mode ol         { margin-bottom: 1em !important; }
+#doc-render.pdf-mode table      { margin-top: 0.5em !important; margin-bottom: 1.2em !important; }
+#doc-render.pdf-mode pre        { margin-top: 0.8em !important; margin-bottom: 1.2em !important; }
+#doc-render.pdf-mode blockquote { margin-top: 0.5em !important; margin-bottom: 1em !important; }
+
+/* --- Code blocks: wrap for print --- */
+
+#doc-render.pdf-mode pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-x: visible !important;
+    box-shadow: none !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+
+#doc-render.pdf-mode pre code {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    font-size: 13px !important;
+}
+
+/* --- Page-break avoidance --- */
+
+#doc-render.pdf-mode p,
+#doc-render.pdf-mode li,
+#doc-render.pdf-mode tr,
+#doc-render.pdf-mode blockquote,
+#doc-render.pdf-mode h1,
+#doc-render.pdf-mode h2,
+#doc-render.pdf-mode h3,
+#doc-render.pdf-mode h4,
+#doc-render.pdf-mode h5,
+#doc-render.pdf-mode h6,
+#doc-render.pdf-mode img {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+#doc-render.pdf-mode table {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}
+
+/* Keep headings glued to the first piece of content that follows */
+#doc-render.pdf-mode .heading-group {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+}

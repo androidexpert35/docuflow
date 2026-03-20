@@ -1,0 +1,122 @@
+/* --- Responsive Breakpoints --- */
+
+@media (max-width: 992px) {
+    :root {
+        --header-height: 64px;
+    }
+
+    body {
+        height: 100dvh;
+    }
+
+    .top-bar {
+        padding: 0 14px;
+        gap: 12px;
+    }
+
+    .brand {
+        font-size: 1rem;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .brand span.subtitle {
+        display: none;
+    }
+
+    .btn-pdf {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .workspace {
+        flex-direction: column;
+        height: calc(100dvh - var(--header-height));
+    }
+
+    .editor-pane {
+        min-width: 0;
+        border-right: none;
+        border-bottom: 1px solid #334155;
+        flex: 0 0 42vh;
+        max-height: 50vh;
+    }
+
+    .split-resizer {
+        flex: 0 0 16px;
+        cursor: row-resize;
+        background: transparent;
+    }
+
+    .split-resizer::before {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+        width: auto;
+        height: 2px;
+        background: linear-gradient(
+            to right,
+            rgba(148, 163, 184, 0) 0%,
+            rgba(148, 163, 184, 0.25) 18%,
+            rgba(148, 163, 184, 0.45) 50%,
+            rgba(148, 163, 184, 0.25) 82%,
+            rgba(148, 163, 184, 0) 100%
+        );
+    }
+
+    .split-resizer::after {
+        width: 56px;
+        height: 10px;
+        background:
+            radial-gradient(circle, rgba(226,232,240,0.85) 1.1px, transparent 1.2px) 35% 50% / 10px 6px,
+            radial-gradient(circle, rgba(226,232,240,0.85) 1.1px, transparent 1.2px) 65% 50% / 10px 6px,
+            linear-gradient(180deg, rgba(30,41,59,0.85), rgba(30,41,59,0.55));
+    }
+
+    .workspace.is-resizing {
+        cursor: row-resize;
+    }
+
+    textarea#md-input {
+        padding: 14px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .pane-label {
+        padding: 10px 14px;
+    }
+
+    .preview-pane {
+        padding: 14px;
+        flex: 1;
+        align-items: stretch;
+    }
+
+    #doc-render {
+        width: 100%;
+        min-height: auto;
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    #doc-render pre {
+        font-size: 12px !important;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 420px) {
+    .brand-icon {
+        padding: 7px;
+        border-radius: 8px;
+    }
+
+    .btn-pdf .material-symbols-rounded {
+        font-size: 18px;
+    }
+}

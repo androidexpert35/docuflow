@@ -1,0 +1,75 @@
+/* --- Top Bar & Brand --- */
+
+.top-bar {
+    height: var(--header-height);
+    background-color: var(--bg-dark);
+    border-bottom: 1px solid #1e293b;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.brand {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.5px;
+}
+
+.brand-icon {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand span.subtitle {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin-left: 5px;
+    padding-left: 10px;
+    border-left: 1px solid #334155;
+}
+
+/* --- Save PDF Button --- */
+
+.btn-pdf {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+.btn-pdf:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 15px rgba(16, 185, 129, 0.3);
+    filter: brightness(1.1);
+}
+
+.btn-pdf:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.btn-pdf .material-symbols-rounded {
+    font-size: 20px;
+}
