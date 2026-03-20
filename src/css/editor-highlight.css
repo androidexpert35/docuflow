@@ -1,60 +1,92 @@
 /* --- Editor Syntax Highlighting (Overlay Technique) --- */
+/*
+ * Uses <div> elements instead of <pre>/<code> to avoid WordPress/CMS
+ * theme rules that aggressively restyle pre & code tags.
+ */
 
 .editor-container {
-    position: relative;
+    position: relative !important;
     flex: 1;
-    overflow: hidden;
+    overflow: hidden !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 /* Highlighted backdrop behind the textarea */
 .editor-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 30px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #e2e8f0;
-    background: transparent;
-    border: none;
-    overflow: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    pointer-events: none;
-    box-sizing: border-box;
-    tab-size: 4;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 30px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #e2e8f0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow: auto !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+    tab-size: 4 !important;
+    -moz-tab-size: 4 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    text-indent: 0 !important;
+    text-shadow: none !important;
+    text-decoration: none !important;
+    float: none !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    z-index: 0 !important;
+    text-align: left !important;
+    direction: ltr !important;
+    -webkit-text-stroke: 0 !important;
 }
 
-.editor-backdrop code {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
-    background: transparent;
-    padding: 0;
-    display: block;
+.editor-highlight-inner {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    color: inherit !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    display: block !important;
+    white-space: inherit !important;
+    word-wrap: inherit !important;
+    overflow-wrap: inherit !important;
+    letter-spacing: inherit !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    text-align: inherit !important;
 }
 
 /* Transparent text textarea — caret stays visible */
 textarea#md-input {
-    position: relative;
-    z-index: 1;
-    color: transparent;
-    caret-color: #93c5fd;
-    background: transparent;
+    position: relative !important;
+    z-index: 1 !important;
+    color: transparent !important;
+    caret-color: #93c5fd !important;
+    background: transparent !important;
 }
 
 /* Hide the backdrop's scrollbar (synced via JS) */
 .editor-backdrop::-webkit-scrollbar {
-    display: none;
-}
-.editor-backdrop {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    display: none !important;
 }
 
 /* --- Markdown Syntax Token Colors --- */
@@ -179,8 +211,8 @@ textarea#md-input::placeholder {
 /* --- Responsive override for editor container --- */
 @media (max-width: 768px) {
     .editor-backdrop {
-        padding: 14px;
-        font-size: 13px;
-        line-height: 1.5;
+        padding: 14px !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
     }
 }

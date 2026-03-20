@@ -1,5 +1,6 @@
 // --- Editor Markdown Syntax Highlighting ---
-// Overlay technique: coloured <pre> backdrop behind a transparent <textarea>.
+// Overlay technique: coloured <div> backdrop behind a transparent <textarea>.
+// Uses <div> instead of <pre>/<code> to avoid WordPress/CMS theme conflicts.
 
 (function () {
     const input = document.getElementById('md-input');
@@ -7,6 +8,10 @@
     const highlightEl = document.getElementById('editor-highlight');
 
     if (!input || !backdrop || !highlightEl) return;
+
+    // Force scrollbar hiding via JS (in case CSS is overridden by WP theme)
+    backdrop.style.scrollbarWidth = 'none';
+    backdrop.style.msOverflowStyle = 'none';
 
     // --- Helpers ---
 

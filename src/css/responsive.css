@@ -82,15 +82,16 @@
     }
 
     textarea#md-input {
-        padding: 14px;
-        font-size: 13px;
-        line-height: 1.5;
+        padding: 14px !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
     }
 
+    pre.editor-backdrop,
     .editor-backdrop {
-        padding: 14px;
-        font-size: 13px;
-        line-height: 1.5;
+        padding: 14px !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
     }
 
     .pane-label {
