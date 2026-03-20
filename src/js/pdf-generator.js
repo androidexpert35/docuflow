@@ -26,6 +26,9 @@ async function generatePDF() {
         // following content sibling so they never split across pages.
         _groupHeadings(element);
 
+        // Allow very tall code blocks to split across pages
+        _relaxTallCodeBlocks(element);
+
         // Let the browser apply the new layout before capturing
         await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 
@@ -51,7 +54,7 @@ async function generatePDF() {
             },
             pagebreak: {
                 mode:  ['css', 'legacy'],
-                avoid: ['p', 'li', 'tr', 'table', 'thead', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'img', 'ul', 'ol', '.heading-group']
+                avoid: ['p', 'li', 'tr', 'table', 'thead', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'img', 'ul', 'ol', '.heading-group']
             }
         };
 
@@ -71,11 +74,13 @@ async function generatePDF() {
 
         element.classList.remove('pdf-mode');
         _ungroupHeadings(element);
+        _restoreCodeBlocks(element);
     } catch (err) {
         console.error('PDF generation failed:', err);
         const el = document.getElementById('doc-render');
         el.classList.remove('pdf-mode');
         _ungroupHeadings(el);
+        _restoreCodeBlocks(el);
     } finally {
         overlay.remove();
         btn.disabled = false;
@@ -151,4 +156,32 @@ function _collectInternalLinks(element) {
     });
 
     return { marginMM, links };
+}
+
+// --- Helper: allow very tall code blocks to split across pages ---
+// Code blocks shorter than ~90% of one printable page height keep
+// break-inside: avoid. Taller blocks get it removed so they can split.
+function _relaxTallCodeBlocks(element) {
+    var marginMM = 20;
+    var usableWidthMM = 210 - marginMM * 2;
+    var usableHeightMM = 297 - marginMM * 2;
+    var pxPerMM = element.scrollWidth / usableWidthMM;
+    var maxKeepPx = usableHeightMM * pxPerMM * 0.9; // 90% of one page
+
+    element.querySelectorAll('pre').forEach(function (pre) {
+        if (pre.offsetHeight > maxKeepPx) {
+            pre.style.breakInside = 'auto';
+            pre.style.pageBreakInside = 'auto';
+            pre.dataset.dfRelaxed = '1';
+        }
+    });
+}
+
+// --- Helper: restore code block break-avoidance after PDF ---
+function _restoreCodeBlocks(element) {
+    element.querySelectorAll('pre[data-df-relaxed]').forEach(function (pre) {
+        pre.style.breakInside = '';
+        pre.style.pageBreakInside = '';
+        delete pre.dataset.dfRelaxed;
+    });
 }
